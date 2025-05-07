@@ -9,6 +9,7 @@ import { CardContent } from "@/components/ui/card";
 import HumanResourceCardContentHeader from "./human-resource-card-content-header";
 import HumanResourceCardContentDetails from "./human-resource-card-content-details";
 import { Skeleton } from "@/components/ui/skeleton";
+import { HumanResourceEmployeeDetails } from "@/lib/employee-details/types";
 
 export default function HumanResourceCardContent() {
   const { search_params } = useSearchParamsStore();
@@ -16,7 +17,7 @@ export default function HumanResourceCardContent() {
     useHumanResourceStore();
 
   const [isHeaderSelected, setIsHeaderSelected] = useState(false);
-  const [employeeDetails, setEmployeeDetails] = useState<any>(null);
+  const [employeeDetails, setEmployeeDetails] = useState<HumanResourceEmployeeDetails | null>(null);
 
   useEffect(() => {
     if (search_params.primary && search_params.search_by) {
@@ -30,7 +31,7 @@ export default function HumanResourceCardContent() {
       });
       setIsHeaderSelected(false);
     }
-  }, [search_params]);
+  }, [search_params, fetchAndSetHumanResource]);
 
   const data = human_resource.body;
   // console.log("Human Resource Data: ", data);
@@ -67,14 +68,14 @@ export default function HumanResourceCardContent() {
 
   if (isHeaderSelected) {
     return (
-      <HumanResourceCardContentDetails employeeDetails={employeeDetails} />
+      <HumanResourceCardContentDetails employeeDetails={employeeDetails!} />
     );
   }
 
   return (
     <CardContent>
       <div className="space-y-4">
-        {data.map((employeeDetails: any) => (
+        {data.map((employeeDetails: HumanResourceEmployeeDetails) => (
           <HumanResourceCardContentHeader
             key={employeeDetails.employeeNumber}
             employeeDetails={employeeDetails}

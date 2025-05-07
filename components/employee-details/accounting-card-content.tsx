@@ -9,6 +9,7 @@ import { CardContent } from "@/components/ui/card";
 import { Skeleton } from "@/components/ui/skeleton";
 import AccountingCardContentDetails from "./accounting-card-content-details";
 import AccountingCardContentHeader from "./accounting-card-content-header";
+import { AccountingEmployeeDetails } from "@/lib/employee-details/types";
 
 export default function AccountingCardContent() {
   const { search_params } = useSearchParamsStore();
@@ -16,7 +17,7 @@ export default function AccountingCardContent() {
     useAccountingStore();
 
   const [isHeaderSelected, setIsHeaderSelected] = useState(false);
-  const [employeeDetails, setEmployeeDetails] = useState<any>(null);
+  const [employeeDetails, setEmployeeDetails] = useState<AccountingEmployeeDetails | null>(null);
 
   useEffect(() => {
     if (search_params.primary && search_params.search_by) {
@@ -30,7 +31,7 @@ export default function AccountingCardContent() {
       });
       setIsHeaderSelected(false);
     }
-  }, [search_params]);
+  }, [search_params, fetchAndSetAccounting]);
 
   const data = accounting.body;
   // console.log("Accounting Data: ", data);
@@ -66,13 +67,13 @@ export default function AccountingCardContent() {
   }
 
   if (isHeaderSelected) {
-    return <AccountingCardContentDetails employeeDetails={employeeDetails} />;
+    return <AccountingCardContentDetails employeeDetails={employeeDetails!} />;
   }
 
   return (
     <CardContent>
       <div className="space-y-4">
-        {data.map((employeeDetails: any) => (
+        {data.map((employeeDetails: AccountingEmployeeDetails) => (
           <AccountingCardContentHeader
             key={employeeDetails.empno}
             employeeDetails={employeeDetails}

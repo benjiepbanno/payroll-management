@@ -1,15 +1,11 @@
 import { Button } from "@/components/ui/button";
+import { AccountingEmployeeDetails } from "@/lib/employee-details/types";
 import { ChevronRight } from "lucide-react";
 
 type Props = {
-  employeeDetails: {
-    empno: string;
-    lastname: string;
-    firstname: string;
-    middlename: string;
-  };
+  employeeDetails: AccountingEmployeeDetails;
   setIsHeaderSelected: (value: boolean) => void;
-  setEmployeeDetails: (value: any) => void;
+  setEmployeeDetails: (value: AccountingEmployeeDetails) => void;
 };
 
 export default function AccountingCardContentHeader({

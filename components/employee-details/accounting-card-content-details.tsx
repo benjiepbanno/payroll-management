@@ -1,28 +1,9 @@
 import { CardContent } from "@/components/ui/card";
 import EmployeeDetailsLineCard from "./employee-details-line-card";
+import { AccountingEmployeeDetails } from "@/lib/employee-details/types";
 
 type Props = {
-  employeeDetails: {
-    empno: string;
-    lastname: string;
-    firstname: string;
-    middlename: string;
-    dob: string;
-    gender: string;
-    address: string;
-    agency_tin: string;
-    agency_gsis: string;
-    agency_pagibig: string;
-    agency_philhealth: string;
-    agency_sss: string;
-    appt: string;
-    rate: string;
-    date_hired: string;
-    date_retired: string;
-    office: string;
-    charges: string;
-    account: string;
-  };
+  employeeDetails: AccountingEmployeeDetails;
 };
 
 export default function AccountingCardContentDetails({

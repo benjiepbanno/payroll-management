@@ -47,7 +47,7 @@ export function EarningsDeductionsTabsContent() {
         fund: earnings_deductions_headers_props.fund,
       });
     }
-  }, [earnings_deductions_headers_props]);
+  }, [earnings_deductions_headers_props, earnings_deductions_headers_params, fetchAndSetEarningsDeductions]);
 
   const data = earnings_deductions.body;
 
@@ -90,7 +90,7 @@ export function RemittancesTabsContent() {
         advno: earnings_deductions_headers_params.advno,
       });
     }
-  }, [earnings_deductions_headers_props]);
+  }, [earnings_deductions_headers_props, earnings_deductions_headers_params, fetchAndSetRemittances]);
 
   const data = remittances.body;
 

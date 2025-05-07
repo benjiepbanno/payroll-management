@@ -37,7 +37,7 @@ export default function DataTableCard() {
         fund: earnings_deductions_headers_params.fund,
       });
     }
-  }, [earnings_deductions_headers_params]);
+  }, [earnings_deductions_headers_params, fetchAndSetEarningsDeductionsHeaders]);
 
   const data = earnings_deductions_headers.body;
 

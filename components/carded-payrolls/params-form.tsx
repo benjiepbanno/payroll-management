@@ -53,10 +53,10 @@ export default function ParamsForm() {
     },
   });
 
-  async function onSubmit(values: any) {
+  async function onSubmit(values: z.infer<typeof formSchema>) {
     if (value) toggleValue();
     // console.log("Params Form: ", values);
-    setParams(values);
+    setParams({ ...values, year: parseInt(values.year, 10) });
   }
 
   return (

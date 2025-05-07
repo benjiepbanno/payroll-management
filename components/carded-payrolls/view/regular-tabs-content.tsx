@@ -51,7 +51,7 @@ export function EarningsMandatoryDeductionsTabsContent() {
         fund: earnings_deductions_headers_props.fund,
       });
     }
-  }, [earnings_deductions_headers_props]);
+  }, [earnings_deductions_headers_props, earnings_deductions_headers_params, fetchAndSetEarningsMandatoryDeductions]);
 
   const data = earnings_mandatory_deductions.body;
 
@@ -96,7 +96,7 @@ export function OtherDeductionsTabsContent() {
         carded_date: earnings_deductions_headers_props.carded_date,
       });
     }
-  }, [earnings_deductions_headers_props]);
+  }, [earnings_deductions_headers_props, earnings_deductions_headers_params, fetchAndSetOtherDeductions]);
 
   const data = other_deductions.body;
 
@@ -139,7 +139,7 @@ export function RemittancesTabsContent() {
         advno: earnings_deductions_headers_params.advno,
       });
     }
-  }, [earnings_deductions_headers_props]);
+  }, [earnings_deductions_headers_props, earnings_deductions_headers_params, fetchAndSetRemittances]);
 
   const data = remittances.body;
 

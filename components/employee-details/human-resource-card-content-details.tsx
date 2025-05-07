@@ -1,37 +1,9 @@
 import { CardContent } from "@/components/ui/card";
 import EmployeeDetailsLineCard from "./employee-details-line-card";
+import { HumanResourceEmployeeDetails } from "@/lib/employee-details/types";
 
 type Props = {
-  employeeDetails: {
-    employeeNumber: string;
-    employee: {
-      firstName: string;
-      lastName: string;
-      middleName: string;
-    };
-    birthDate: string;
-    sex: string;
-    currentAppointment: {
-      employmentType: string;
-      officeName: string;
-      position: string;
-      programCode: string;
-      program: string;
-      expenseCode: string;
-      division: string;
-    };
-    currentEmployment: {
-      dateFrom: string;
-      dateTo: string;
-      rate: string;
-      actualSalaryAnnual: string;
-      actualSalaryMonthly: string;
-      statusAppointment: string;
-      remarksAppointment: string;
-    };
-    philHealth: string;
-    originalAppointmentDate: string;
-  };
+  employeeDetails: HumanResourceEmployeeDetails;
 };
 
 export default function HumanResourceCardContentDetails({
