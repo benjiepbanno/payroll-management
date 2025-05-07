@@ -1,11 +1,8 @@
 import { ModeToggle } from "./mode-toggle";
 
-
 type Props = {
   title: string;
-}
-
-
+};
 
 export default function PageHeader({ title }: Props) {
   return (
@@ -14,5 +11,5 @@ export default function PageHeader({ title }: Props) {
 
       <ModeToggle />
     </div>
-  )
+  );
 }

@@ -43,7 +43,7 @@ export async function fetchAccountingEmployeeDetails(values: {
 
     if (!response.ok) {
       return {
-        body: {},
+        body: null,
         error: "An error occurred while fetching data",
       };
     }
@@ -55,12 +55,12 @@ export async function fetchAccountingEmployeeDetails(values: {
     );
 
     return {
-      body: data,
-      error: null,
+      body: data.body,
+      error: data.error,
     };
   } catch (error) {
     return {
-      body: {},
+      body: null,
       error: "Server error. Please check the API connection.",
     };
   }
@@ -105,24 +105,24 @@ export async function fetchHumanResourceEmployeeDetails(values: {
 
     if (!response.ok) {
       return {
-        body: {},
+        body: null,
         error: "An error occurred while fetching data",
       };
     }
 
     const data = await response.json();
     console.log(
-      "Employee Details Actions fetchEmployeeDetails response:",
+      "Employee Details Actions fetchHumanResourceEmployeeDetails response:",
       data
     );
 
     return {
-      body: data,
-      error: null,
+      body: data.body,
+      error: data.error,
     };
   } catch (error) {
     return {
-      body: {},
+      body: null,
       error: "Server error. Please check the API connection.",
     };
   }

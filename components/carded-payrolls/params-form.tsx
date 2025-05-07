@@ -29,7 +29,7 @@ import { useEarningsDeductionsHeadersStore } from "@/store/carded-payrolls/earni
 
 const formSchema = z.object({
   appointment_status: z.string().min(1, "Required"),
-  year: z.string().min(4, "Enter valid year"),
+  year: z.string().min(4, "Enter valid year").max(4, "Enter valid year"),
   payroll_type: z.string().min(1, "Required"),
   advno: z.string().min(1, "Required"),
   fund: z.string().min(1, "Required"),

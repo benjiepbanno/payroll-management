@@ -27,7 +27,7 @@ type HumanResourceState = {
 export const useHumanResourceStore = create<HumanResourceState>()(
   persist(
     (set) => ({
-      human_resource: { body: {} },
+      human_resource: { body: [] },
       is_loading: false,
       error: null,
 
@@ -35,7 +35,7 @@ export const useHumanResourceStore = create<HumanResourceState>()(
 
       resetHumanResource: () =>
         set({
-          human_resource: { body: {} },
+          human_resource: { body: [] },
           is_loading: false,
           error: null,
         }),
@@ -47,11 +47,13 @@ export const useHumanResourceStore = create<HumanResourceState>()(
           const { body, error } = await fetchHumanResourceEmployeeDetails(
             params
           );
+          console.log("Store Human Resource Data: ", body);
+          console.log("Store Human Resource Error: ", error);
 
           if (error) {
             set({ error: error, is_loading: false });
           } else {
-            set({ human_resource: body, is_loading: false });
+            set({ human_resource: { body }, is_loading: false });
           }
         } catch (error) {
           set({

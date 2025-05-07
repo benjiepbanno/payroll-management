@@ -1,7 +1,7 @@
 "use client";
 
 import PageHeader from "@/components/page-header";
-import { SearchForm } from "@/components/employee-details/search-form";
+import SearchForm from "@/components/employee-details/search-form";
 import AccountingCard from "@/components/employee-details/accounting-card";
 import HumanResourceCard from "@/components/employee-details/human-resource-card";
 
@@ -14,9 +14,7 @@ export default function Page() {
     <div className="space-y-16">
       <PageHeader title="Employee Details"/>
 
-      <div className="flex items-end justify-between">
-        <SearchForm />
-      </div>
+      <SearchForm />
 
       <div className="grid grid-cols-2 gap-8">
         {search_params.primary === "accounting" ? (

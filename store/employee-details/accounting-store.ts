@@ -27,7 +27,7 @@ type AccountingState = {
 export const useAccountingStore = create<AccountingState>()(
   persist(
     (set) => ({
-      accounting: { body: {} },
+      accounting: { body: [] },
       is_loading: false,
       error: null,
 
@@ -35,7 +35,7 @@ export const useAccountingStore = create<AccountingState>()(
 
       resetAccounting: () =>
         set({
-          accounting: { body: {} },
+          accounting: { body: [] },
           is_loading: false,
           error: null,
         }),
@@ -45,11 +45,13 @@ export const useAccountingStore = create<AccountingState>()(
 
         try {
           const { body, error } = await fetchAccountingEmployeeDetails(params);
+          console.log("Store Accounting Data: ", body);
+          console.log("Store Accounting Error: ", error);
 
           if (error) {
             set({ error: error, is_loading: false });
           } else {
-            set({ accounting: body, is_loading: false });
+            set({ accounting: { body }, is_loading: false });
           }
         } catch (error) {
           set({

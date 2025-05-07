@@ -34,7 +34,8 @@ export default function AccountingCardContent() {
   }, [search_params, fetchAndSetAccounting]);
 
   const data = accounting.body;
-  // console.log("Accounting Data: ", data);
+  console.log("Accounting Data: ", data);
+  console.log("Accounting Error: ", error);
 
   if (is_loading) {
     return (

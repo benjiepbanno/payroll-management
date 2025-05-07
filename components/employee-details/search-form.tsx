@@ -36,7 +36,7 @@ const formSchema = z.object({
   middle_name: z.string(),
 });
 
-export function SearchForm() {
+export default function SearchForm() {
   const { search_params, setSearchParams } = useSearchParamsStore();
   const [isSearchByNumber, setIsSearchByNumber] = useState(true);
 
