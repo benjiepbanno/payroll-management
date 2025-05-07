@@ -42,9 +42,9 @@ export const useOtherDeductionsStore = create<OtherDeductionsState>()(
         set({ isLoading: true, error: null });
 
         try {
-          console.log("Store fetchAndSetOtherDeductions: ", params);
+          // console.log("Store fetchAndSetOtherDeductions: ", params);
           const result = await fetchOtherDeductions(params);
-          console.log("Store fetchAndSetOtherDeductions: ", result);
+          // console.log("Store fetchAndSetOtherDeductions: ", result);
 
           if (result.error) {
             set({ error: result.error, isLoading: false });

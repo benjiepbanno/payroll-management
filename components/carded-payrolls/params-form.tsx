@@ -55,7 +55,7 @@ export default function ParamsForm() {
 
   async function onSubmit(values: any) {
     if (value) toggleValue();
-    console.log("Params Form: ", values);
+    // console.log("Params Form: ", values);
     setParams(values);
   }
 

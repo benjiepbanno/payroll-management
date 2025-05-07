@@ -41,9 +41,9 @@ export const useRemittancesStore = create<RemittancesState>()(
         set({ isLoading: true, error: null });
 
         try {
-          console.log("Store fetchAndSetRemittances Params: ", params);
+          // console.log("Store fetchAndSetRemittances Params: ", params);
           const result = await fetchRemittances(params);
-          console.log("Store fetchAndSetRemittances Result: ", result);
+          // console.log("Store fetchAndSetRemittances Result: ", result);
 
           if (result.error) {
             set({ error: result.error, isLoading: false });

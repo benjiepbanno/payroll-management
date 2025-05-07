@@ -34,10 +34,10 @@ export function DataTableRowActions<TData>({
   const [alertOpen, setAlertOpen] = useState(false);
 
   function viewDetails() {
-    console.log("RowActions Header:", header);
+    // console.log("RowActions Header:", header);
     setProps(header);
     setValue(!value);
-    console.log(value);
+    // console.log(value);
   }
 
   function deletePayroll() {
@@ -55,7 +55,7 @@ export function DataTableRowActions<TData>({
       },
     ];
     setPayrollsDeletion(props_list);
-    console.log("Props List:", props_list);
+    // console.log("Props List:", props_list);
   }
 
   return (

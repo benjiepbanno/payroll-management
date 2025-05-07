@@ -16,7 +16,9 @@ export async function fetchAccountingEmployeeDetails(values: {
   try {
     const { primary, search_by, employee_number, last_name, first_name, middle_name } = values;
 
-    const baseUrl = search_by === "employee-number" ? `http://127.0.0.1:8000/api/payroll-management/employee-details/accounting/${employee_number}` : `http://127.0.0.1:8000/api/payroll-management/employee-details/accounting`;
+    const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL || "http://127.0.0.1:8000/api";
+
+    const baseUrl = search_by === "employee-number" ? `${API_BASE_URL}/payroll-management/employee-details/accounting/${employee_number}` : `${API_BASE_URL}/payroll-management/employee-details/accounting`;
 
     const url = new URL(baseUrl);
 
@@ -76,7 +78,9 @@ export async function fetchHumanResourceEmployeeDetails(values: {
   try {
     const { primary, search_by, employee_number, last_name, first_name, middle_name } = values;
 
-    const baseUrl = search_by === "employee-number" ? `http://127.0.0.1:8000/api/payroll-management/employee-details/human-resource/${employee_number}` : `http://127.0.0.1:8000/api/payroll-management/employee-details/human-resource`;
+    const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL || "http://127.0.0.1:8000/api";
+
+    const baseUrl = search_by === "employee-number" ? `${API_BASE_URL}/payroll-management/employee-details/human-resource/${employee_number}` : `${API_BASE_URL}/payroll-management/employee-details/human-resource`;
 
     const url = new URL(baseUrl);
 

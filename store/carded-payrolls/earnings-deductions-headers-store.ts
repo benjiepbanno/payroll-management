@@ -45,9 +45,9 @@ export const useEarningsDeductionsHeadersStore =
           set({ isLoading: true, error: null });
 
           try {
-            console.log("Store fetchAndSetEarningsDeductionsHeaders: ", params);
+            // console.log("Store fetchAndSetEarningsDeductionsHeaders: ", params);
             const result = await fetchEarningsDeductionsHeaders(params);
-            console.log("Store fetchAndSetEarningsDeductionsHeaders: ", result);
+            // console.log("Store fetchAndSetEarningsDeductionsHeaders: ", result);
 
             if (result.error) {
               set({ error: result.error, isLoading: false });

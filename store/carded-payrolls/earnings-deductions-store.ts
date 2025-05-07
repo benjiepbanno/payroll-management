@@ -43,9 +43,9 @@ export const useEarningsDeductionsStore = create<EarningsDeductionsState>()(
         set({ isLoading: true, error: null });
 
         try {
-          console.log("Store fetchAndSetEarningsDeductions: ", params);
+          // console.log("Store fetchAndSetEarningsDeductions: ", params);
           const result = await fetchEarningsDeductions(params);
-          console.log("Store fetchAndSetEarningsDeductions: ", result);
+          // console.log("Store fetchAndSetEarningsDeductions: ", result);
 
           if (result.error) {
             set({ error: result.error, isLoading: false });

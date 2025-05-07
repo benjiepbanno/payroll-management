@@ -53,7 +53,7 @@ export function SearchForm() {
   });
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
-    console.log("Search Form: ", values);
+    // console.log("Search Form: ", values);
     if (isSearchByNumber) {
       values.last_name = "";
       values.first_name = "";
@@ -64,7 +64,7 @@ export function SearchForm() {
     setSearchParams(values);
   }
 
-  console.log("Default Search Params: ", search_params);
+  // console.log("Default Search Params: ", search_params);
 
   return (
     <Form {...form}>

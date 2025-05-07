@@ -58,9 +58,9 @@ export const usePayrollsDeletionStore = create<PayrollsDeletionState>(
       set({ isLoading: true, error: null });
 
       try {
-        console.log("Store deleteAndUpdatePayroll Params: ", params);
+        // console.log("Store deleteAndUpdatePayroll Params: ", params);
         const result = await deletePayroll(params);
-        console.log("Store deleteAndUpdatePayroll Result: ", result);
+        // console.log("Store deleteAndUpdatePayroll Result: ", result);
 
         set((state) => ({
           payrolls_deletion: state.payrolls_deletion.map((payroll) =>

@@ -55,7 +55,7 @@ export function DeleteDialog() {
       },
     ];
     setPayrollsDeletion(props_list);
-    console.log("Props List:", props_list);
+    // console.log("Props List:", props_list);
   }
 
   return (

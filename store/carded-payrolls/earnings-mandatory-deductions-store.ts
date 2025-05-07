@@ -45,15 +45,15 @@ export const useEarningsMandatoryDeductionsStore =
           set({ isLoading: true, error: null });
 
           try {
-            console.log(
-              "Store fetchAndSetEarningsMandatoryDeductions: ",
-              params
-            );
+            // console.log(
+            //   "Store fetchAndSetEarningsMandatoryDeductions: ",
+            //   params
+            // );
             const result = await fetchEarningsMandatoryDeductions(params);
-            console.log(
-              "Store fetchAndSetEarningsMandatoryDeductions: ",
-              result
-            );
+            // console.log(
+            //   "Store fetchAndSetEarningsMandatoryDeductions: ",
+            //   result
+            // );
 
             if (result.error) {
               set({ error: result.error, isLoading: false });

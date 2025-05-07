@@ -33,7 +33,7 @@ export default function HumanResourceCardContent() {
   }, [search_params]);
 
   const data = human_resource.body;
-  console.log("Human Resource Data: ", data);
+  // console.log("Human Resource Data: ", data);
 
   if (is_loading) {
     return (

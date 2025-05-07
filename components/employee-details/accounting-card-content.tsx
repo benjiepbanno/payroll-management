@@ -33,7 +33,7 @@ export default function AccountingCardContent() {
   }, [search_params]);
 
   const data = accounting.body;
-  console.log("Accounting Data: ", data);
+  // console.log("Accounting Data: ", data);
 
   if (is_loading) {
     return (
