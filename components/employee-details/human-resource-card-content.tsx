@@ -16,8 +16,10 @@ export default function HumanResourceCardContent() {
   const { human_resource, is_loading, error, fetchAndSetHumanResource } =
     useHumanResourceStore();
 
+  const data = human_resource.body;
   const [isHeaderSelected, setIsHeaderSelected] = useState(false);
-  const [employeeDetails, setEmployeeDetails] = useState<HumanResourceEmployeeDetails | null>(null);
+  const [employeeDetails, setEmployeeDetails] =
+    useState<HumanResourceEmployeeDetails | null>(null);
 
   useEffect(() => {
     if (search_params.primary && search_params.search_by) {
@@ -33,9 +35,12 @@ export default function HumanResourceCardContent() {
     }
   }, [search_params, fetchAndSetHumanResource]);
 
-  const data = human_resource.body;
-  console.log("Human Resource Data: ", data);
-  console.log("Human Resource Error: ", error);
+  useEffect(() => {
+    if (data.length === 1) {
+      setIsHeaderSelected(true);
+      setEmployeeDetails(data[0]);
+    }
+  }, [data]);
 
   if (is_loading) {
     return (

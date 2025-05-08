@@ -16,8 +16,10 @@ export default function AccountingCardContent() {
   const { accounting, is_loading, error, fetchAndSetAccounting } =
     useAccountingStore();
 
+  const data = accounting.body;
   const [isHeaderSelected, setIsHeaderSelected] = useState(false);
-  const [employeeDetails, setEmployeeDetails] = useState<AccountingEmployeeDetails | null>(null);
+  const [employeeDetails, setEmployeeDetails] =
+    useState<AccountingEmployeeDetails | null>(null);
 
   useEffect(() => {
     if (search_params.primary && search_params.search_by) {
@@ -33,9 +35,12 @@ export default function AccountingCardContent() {
     }
   }, [search_params, fetchAndSetAccounting]);
 
-  const data = accounting.body;
-  console.log("Accounting Data: ", data);
-  console.log("Accounting Error: ", error);
+  useEffect(() => {
+    if (data.length === 1) {
+      setIsHeaderSelected(true);
+      setEmployeeDetails(data[0]);
+    }
+  }, [data]);
 
   if (is_loading) {
     return (
