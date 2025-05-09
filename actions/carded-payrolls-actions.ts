@@ -1,5 +1,7 @@
 "use server";
 
+import { headers } from "next/headers";
+
 export async function fetchEarningsDeductionsHeaders(values: {
   appointment_status: string;
   year: number;
@@ -109,7 +111,8 @@ export async function fetchOtherDeductions(values: {
   try {
     const { appointment_status, year, period, advno, carded_date } = values;
 
-    const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL || "http://127.0.0.1:8000/api";
+    const API_BASE_URL =
+      process.env.NEXT_PUBLIC_API_BASE_URL || "http://127.0.0.1:8000/api";
 
     const baseUrl = `${API_BASE_URL}/payroll-management/carded-payrolls/${appointment_status}/${year}/other-deductions`;
 
@@ -157,7 +160,8 @@ export async function fetchEarningsDeductions(values: {
     const { appointment_status, year, period, advno, carded_date, fund } =
       values;
 
-    const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL || "http://127.0.0.1:8000/api";
+    const API_BASE_URL =
+      process.env.NEXT_PUBLIC_API_BASE_URL || "http://127.0.0.1:8000/api";
 
     const baseUrl = `${API_BASE_URL}/payroll-management/carded-payrolls/${appointment_status}/${year}/earnings-deductions`;
 
@@ -203,7 +207,8 @@ export async function fetchRemittances(values: {
   try {
     const { appointment_status, year, period, advno } = values;
 
-    const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL || "http://127.0.0.1:8000/api";
+    const API_BASE_URL =
+      process.env.NEXT_PUBLIC_API_BASE_URL || "http://127.0.0.1:8000/api";
 
     const baseUrl = `${API_BASE_URL}/payroll-management/carded-payrolls/${appointment_status}/${year}/remittances`;
 
@@ -264,7 +269,13 @@ export async function deletePayroll(values: {
       remarks,
     } = values;
 
-    const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL || "http://127.0.0.1:8000/api";
+    const headersList = await headers();
+    const forwardedFor = headersList.get("x-forwarded-for");
+    const rawIp = forwardedFor?.split(",")[0]?.trim() || "unknown";
+    const ip = rawIp.replace(/^::ffff:/, ""); // Strips IPv6-mapped prefix if present
+
+    const API_BASE_URL =
+      process.env.NEXT_PUBLIC_API_BASE_URL || "http://127.0.0.1:8000/api";
 
     const baseUrl =
       payroll_type === "regular"
@@ -278,7 +289,7 @@ export async function deletePayroll(values: {
     if (carded_by) url.searchParams.append("carded_by", carded_by);
     if (carded_date) url.searchParams.append("carded_date", carded_date);
     if (fund) url.searchParams.append("fund", fund);
-    if (user) url.searchParams.append("user", user);
+    if (user) url.searchParams.append("user", ip);
     if (remarks) url.searchParams.append("remarks", remarks);
 
     const response = await fetch(url.toString(), {
@@ -306,4 +317,3 @@ export async function deletePayroll(values: {
     };
   }
 }
-

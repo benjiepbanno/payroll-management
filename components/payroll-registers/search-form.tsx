@@ -2,7 +2,7 @@
 
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
-import { z } from "zod";
+import { set, z } from "zod";
 
 import { Search } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -23,26 +23,33 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 
+import { getClientIpAction } from "@/actions/payroll-registers-actions";
+import { useSearchParamsStore } from "@/store/payroll-registers/search-params-store";
+
 const formSchema = z.object({
   fiscal_year: z.string().min(4, "Enter valid year").max(4, "Enter valid year"),
   fund: z.string().min(1, "Required"),
-  tracking_number: z.string().min(1, "Required"),
   advno: z.string().min(1, "Required"),
+  tracking_number: z.string().min(1, "Required"),
 });
 
 export default function SearchForm() {
+  const { search_params, setSearchParams } = useSearchParamsStore();
+
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      fiscal_year: "",
-      fund: "",
-      tracking_number: "",
-      advno: "",
+      fiscal_year: search_params.fiscal_year ||"",
+      fund: search_params.fund || "",
+      advno: search_params.advno || "",
+      tracking_number: search_params.tracking_number || "",
     },
   });
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
     console.log("Search Form: ", values);
+    getClientIpAction();
+    setSearchParams(values);
   }
 
   return (
@@ -98,14 +105,14 @@ export default function SearchForm() {
 
         <FormField
           control={form.control}
-          name="tracking_number"
+          name="advno"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Tracking Number</FormLabel>
+              <FormLabel>ADV Number</FormLabel>
               <FormControl>
                 <Input
                   {...field}
-                  placeholder="Enter tracking number"
+                  placeholder="Enter adv number"
                   className="w-[200px]"
                 />
               </FormControl>
@@ -116,14 +123,14 @@ export default function SearchForm() {
 
         <FormField
           control={form.control}
-          name="advno"
+          name="tracking_number"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>ADV Number</FormLabel>
+              <FormLabel>Tracking Number</FormLabel>
               <FormControl>
                 <Input
                   {...field}
-                  placeholder="Enter adv number"
+                  placeholder="Enter tracking number"
                   className="w-[200px]"
                 />
               </FormControl>
