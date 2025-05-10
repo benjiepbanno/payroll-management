@@ -1,8 +1,6 @@
 "use client";
 
 import { useEffect } from "react";
-import { Skeleton } from "../ui/skeleton";
-import { Spinner } from "@heroui/spinner";
 
 import { useSearchParamsStore } from "@/store/payroll-registers/search-params-store";
 import { usePeriodsStore } from "@/store/payroll-registers/periods-store";
@@ -12,7 +10,7 @@ import PayrollRegisterSummary from "./payroll-register-summary";
 
 export default function SearchResult() {
   const { search_params } = useSearchParamsStore();
-  const { is_loading, error, fetchAndSetPeriods } = usePeriodsStore();
+  const { periods, is_loading, error, fetchAndSetPeriods } = usePeriodsStore();
 
   useEffect(() => {
     if (
@@ -40,11 +38,17 @@ export default function SearchResult() {
 
   if (error) {
     return (
-      <>
-        <div className="flex justify-center h-96">
-          <p style={{ color: "red" }}>{error}</p>
-        </div>
-      </>
+      <div className="flex justify-center items-center h-96">
+        <span style={{ color: "red" }}>{error}</span>
+      </div>
+    );
+  }
+
+  if (periods.body.length === 0) {
+    return (
+      <div className="flex justify-center items-center h-96">
+        <p style={{ color: "red" }}>No records found.</p>
+      </div>
     );
   }
 
