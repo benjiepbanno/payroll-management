@@ -1,4 +1,4 @@
-import { fetchPayrollRegisterPeriods } from "@/actions/payroll-registers-actions";
+import { fetchPayrollRegister } from "@/actions/payroll-registers-actions";
 import { create } from "zustand";
 import { createJSONStorage, persist } from "zustand/middleware";
 
@@ -41,7 +41,7 @@ export const usePeriodsStore = create<PeriodsState>()(
         set({ is_loading: true, error: null });
 
         try {
-          const { body, error } = await fetchPayrollRegisterPeriods(params);
+          const { body, error } = await fetchPayrollRegister(params);
           console.log("Store Periods Data: ", body);
           console.log("Store Periods Error: ", error);
 

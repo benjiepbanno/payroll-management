@@ -5,8 +5,8 @@ import { useEffect } from "react";
 import { useSearchParamsStore } from "@/store/payroll-registers/search-params-store";
 import { usePeriodsStore } from "@/store/payroll-registers/periods-store";
 
-import PayrollRegister from "./payroll-register";
-import PayrollRegisterSummary from "./payroll-register-summary";
+import PayrollRegister from "./payroll-register/payroll-register";
+import PayrollRegisterSummary from "./payroll-register-summary/payroll-register-summary";
 
 export default function SearchResult() {
   const { search_params } = useSearchParamsStore();
@@ -30,7 +30,7 @@ export default function SearchResult() {
 
   if (is_loading) {
     return (
-      <div className="flex justify-center h-96">
+      <div className="flex justify-center h-150">
         <span className="loading loading-dots loading-xl"></span>
       </div>
     );
@@ -38,7 +38,7 @@ export default function SearchResult() {
 
   if (error) {
     return (
-      <div className="flex justify-center items-center h-96">
+      <div className="flex justify-center items-center h-150">
         <span style={{ color: "red" }}>{error}</span>
       </div>
     );
@@ -46,7 +46,7 @@ export default function SearchResult() {
 
   if (periods.body.length === 0) {
     return (
-      <div className="flex justify-center items-center h-96">
+      <div className="flex justify-center items-center h-150">
         <p style={{ color: "red" }}>No records found.</p>
       </div>
     );
@@ -55,7 +55,6 @@ export default function SearchResult() {
   return (
     <>
       <PayrollRegister />
-
       <PayrollRegisterSummary />
     </>
   );

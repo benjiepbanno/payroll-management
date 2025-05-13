@@ -35,7 +35,7 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <main className="p-16 h-svh font-[family-name:var(--font-geist-sans)]">
+          <main className="p-16 font-[family-name:var(--font-geist-sans)]">
             {children}
           </main>
         </ThemeProvider>
