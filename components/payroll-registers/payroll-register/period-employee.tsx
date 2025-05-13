@@ -19,7 +19,7 @@ export default function PayrollRegisterPeriodEmployee({
   );
 
   return (
-    <div className="grid grid-cols-30 gap-x-2 text-sm border">
+    <div className="grid grid-cols-30 gap-x-2 p-1 text-sm border">
       <div className="text-center">{employee_index + 1}</div>
       <div className="col-span-2">{employee_details.employee_number}</div>
       <div className="col-span-3">{employee_details.employee_name}</div>

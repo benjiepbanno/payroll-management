@@ -11,7 +11,6 @@ export default function PayrollRegister() {
   const { periods } = usePeriodsStore();
 
   const data = periods.body;
-  console.log("PayrollRegister component mounted, periods data:", data);
 
   return (
     <div className="space-y-2">

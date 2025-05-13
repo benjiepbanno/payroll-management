@@ -1,15 +1,27 @@
+"use client";
 
-import PayrollRegisterSummaryHeader from "./payroll-register-summary-header";
-import PayrollRegisterSummaryTableHeaders from "./payroll-register-summary-table-headers";
+import { usePeriodsStore } from "@/store/payroll-registers/periods-store";
 
+import PayrollRegisterSummaryHeader from "./header";
+import PayrollRegisterSummaryTableHeaders from "./table-headers";
+import PayrollRegisterSummaryPeriod from "./period";
+import { PeriodDetails } from "@/lib/payroll-registers/types";
 
 export default function PayrollRegisterSummary() {
+  const { periods } = usePeriodsStore();
+
+  const data = periods.body;
+
   return (
-    <div className="bg-sky-100">
+    <div className="space-y-2">
       <PayrollRegisterSummaryHeader />
-      <br />
       <PayrollRegisterSummaryTableHeaders />
-      
+      {data.map((period_details: PeriodDetails) => (
+        <PayrollRegisterSummaryPeriod
+          key={period_details.period}
+          period_details={period_details}
+        />
+      ))}
     </div>
   );
 }

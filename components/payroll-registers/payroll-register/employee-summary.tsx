@@ -38,5 +38,8 @@ export default function PayrollRegisterPeriodEmployeeSummary({
 }
 
 function formatAmount(amount: number): string {
-  return amount.toFixed(2);
+  return amount.toLocaleString(undefined, {
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2,
+  });
 }

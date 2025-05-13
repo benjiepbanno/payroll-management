@@ -1,6 +1,7 @@
 export type PeriodDetails = {
   period: string;
   employees: EmployeeDetails[];
+  period_summary: PeriodSummary;
 };
 
 export type EmployeeDetails = {
@@ -32,4 +33,11 @@ export type EmployeeSummary = {
   statutory_deductions_personal: number;
   statutory_deductions_govt: number;
   net_pay: number;
+};
+
+export type PeriodSummary = {
+  number_of_employees: number;
+  earnings: EarningDetails[];
+  statutory_deductions: DeductionDetails;
+  other_deductions: DeductionDetails;
 };
