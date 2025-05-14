@@ -1,6 +1,6 @@
 export default function PayrollRegisterHeader() {
   return (
-    <div>
+    <div className="">
       <div className="font-bold text-center">General Payroll Register</div>
       <div className="text-sm text-center">
         <span className="font-bold">Check Details</span>

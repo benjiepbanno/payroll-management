@@ -68,10 +68,6 @@ export async function fetchPayrollRegister(values: {
     }
 
     const data = await response.json();
-    console.log(
-      "Payroll Register Actions fetchPayrollRegister response:",
-      data
-    );
 
     return {
       body: data.body,

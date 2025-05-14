@@ -1,5 +1,8 @@
 import { PeriodDetails } from "@/lib/payroll-registers/types";
 import PayrollRegisterSummaryPeriodEarnings from "./earnings";
+import PayrollRegisterSummaryPeriodOtherDeductions from "./other-deductions";
+import PayrollRegisterSummaryPeriodStatutoryDeductions from "./statutory-deductions";
+import PayrollRegisterSummaryPeriodSummary from "./period-summary";
 
 type Props = {
   period_details: PeriodDetails;
@@ -24,6 +27,18 @@ export default function PayrollRegisterSummaryPeriod({
 
         <PayrollRegisterSummaryPeriodEarnings
           earning_details={period_details.period_summary.earnings}
+        />
+
+        <PayrollRegisterSummaryPeriodOtherDeductions
+          deduction_details={period_details.period_summary.other_deductions}
+        />
+
+        <PayrollRegisterSummaryPeriodStatutoryDeductions
+          deduction_details={period_details.period_summary.statutory_deductions}
+        />
+
+        <PayrollRegisterSummaryPeriodSummary
+          period_summary={period_details.period_summary.summary}
         />
       </div>
     </div>

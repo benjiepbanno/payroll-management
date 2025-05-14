@@ -47,8 +47,6 @@ export default function SearchForm() {
   });
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
-    console.log("Search Form: ", values);
-    getClientIpAction();
     setSearchParams(values);
   }
 

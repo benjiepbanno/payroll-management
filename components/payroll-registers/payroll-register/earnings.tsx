@@ -1,4 +1,5 @@
 import { EarningDetails } from "@/lib/payroll-registers/types";
+import { formatAmount } from "@/lib/payroll-registers/utils";
 
 type Props = {
   earning_details: EarningDetails[];
@@ -12,7 +13,7 @@ export default function PayrollRegisterPeriodEmployeeEarnings({
       {earning_details.map((earning) => (
         <div className="flex justify-between" key={earning.type}>
           <span>{earning.code_name}</span>
-          <span>{earning.amount}</span>
+          <span>{formatAmount(earning.amount)}</span>
         </div>
       ))}
     </div>

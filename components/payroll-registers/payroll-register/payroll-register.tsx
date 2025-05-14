@@ -16,6 +16,7 @@ export default function PayrollRegister() {
     <div className="space-y-2">
       <PayrollRegisterHeader />
       <PayrollRegisterTableHeaders />
+
       {data.map((period_details: PeriodDetails) => (
         <PayrollRegisterPeriod
           key={period_details.period}

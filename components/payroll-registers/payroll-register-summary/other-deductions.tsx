@@ -3,10 +3,11 @@ import { formatAmount } from "@/lib/payroll-registers/utils";
 
 type Props = {
   deduction_details: DeductionDetails[];
-}
+};
 
-
-export default function PayrollRegisterPeriodEmployeeOtherDeductions({ deduction_details }: Props) {
+export default function PayrollRegisterSummaryPeriodOtherDeductions({
+  deduction_details,
+}: Props) {
   return (
     <div className="col-span-5">
       {deduction_details.map((deduction) => (

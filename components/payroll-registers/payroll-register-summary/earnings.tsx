@@ -1,4 +1,5 @@
 import { EarningDetails } from "@/lib/payroll-registers/types";
+import { formatAmount } from "@/lib/payroll-registers/utils";
 
 type Props = {
   earning_details: EarningDetails[];
@@ -6,11 +7,6 @@ type Props = {
 
 
 export default function PayrollRegisterSummaryPeriodEarnings({ earning_details }: Props) {
-
-  console.log(
-    "PayrollRegisterSummaryPeriodEarnings component mounted, earning details:",
-    earning_details
-  );
   return (
     <div className="col-span-5">
       {earning_details.map((earning) => (
@@ -21,11 +17,4 @@ export default function PayrollRegisterSummaryPeriodEarnings({ earning_details }
       ))}
     </div>
   )
-}
-
-function formatAmount(amount: number): string {
-  return amount.toLocaleString(undefined, {
-    minimumFractionDigits: 2,
-    maximumFractionDigits: 2,
-  });
 }

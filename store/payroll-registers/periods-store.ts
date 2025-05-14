@@ -42,8 +42,6 @@ export const usePeriodsStore = create<PeriodsState>()(
 
         try {
           const { body, error } = await fetchPayrollRegister(params);
-          console.log("Store Periods Data: ", body);
-          console.log("Store Periods Error: ", error);
 
           if (error) {
             set({ error: error, is_loading: false });

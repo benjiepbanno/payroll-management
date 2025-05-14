@@ -38,6 +38,7 @@ export type EmployeeSummary = {
 export type PeriodSummary = {
   number_of_employees: number;
   earnings: EarningDetails[];
-  statutory_deductions: DeductionDetails;
-  other_deductions: DeductionDetails;
+  statutory_deductions: DeductionDetails[];
+  other_deductions: DeductionDetails[];
+  summary: EmployeeSummary;
 };

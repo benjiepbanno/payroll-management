@@ -13,10 +13,6 @@ export default function PayrollRegisterPeriodEmployee({
   employee_index,
   employee_details,
 }: Props) {
-  console.log(
-    "PayrollRegisterPeriodEmployee component mounted, employee details:",
-    employee_details
-  );
 
   return (
     <div className="grid grid-cols-30 gap-x-2 p-1 text-sm border">

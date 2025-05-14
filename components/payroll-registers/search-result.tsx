@@ -47,7 +47,7 @@ export default function SearchResult() {
   if (periods.body.length === 0) {
     return (
       <div className="flex justify-center items-center h-150">
-        <p style={{ color: "red" }}>No records found.</p>
+        <p style={{ color: "red" }}>No record found.</p>
       </div>
     );
   }
