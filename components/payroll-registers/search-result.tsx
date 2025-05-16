@@ -7,10 +7,12 @@ import { usePeriodsStore } from "@/store/payroll-registers/periods-store";
 
 import PayrollRegister from "./payroll-register/payroll-register";
 import PayrollRegisterSummary from "./payroll-register-summary/payroll-register-summary";
+import { usePayrollRegisterStore } from "@/store/payroll-registers/payroll-register-store";
 
 export default function SearchResult() {
   const { search_params } = useSearchParamsStore();
-  const { periods, is_loading, error, fetchAndSetPeriods } = usePeriodsStore();
+  const { payroll_register, is_loading, error, fetchAndSetPayrollRegister } =
+    usePayrollRegisterStore();
 
   useEffect(() => {
     if (
@@ -19,14 +21,14 @@ export default function SearchResult() {
       search_params.advno &&
       search_params.tracking_number
     ) {
-      fetchAndSetPeriods({
+      fetchAndSetPayrollRegister({
         fiscal_year: search_params.fiscal_year,
         fund: search_params.fund,
         advno: search_params.advno,
         tracking_number: search_params.tracking_number,
       });
     }
-  }, [search_params, fetchAndSetPeriods]);
+  }, [search_params, fetchAndSetPayrollRegister]);
 
   if (is_loading) {
     return (
@@ -44,10 +46,10 @@ export default function SearchResult() {
     );
   }
 
-  if (periods.body.length === 0) {
+  if (Object.keys(payroll_register.body).length === 0) {
     return (
       <div className="flex justify-center items-center h-150">
-        <p style={{ color: "red" }}>No record found.</p>
+        <p style={{ color: "red" }}>No payroll register found.</p>
       </div>
     );
   }

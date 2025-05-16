@@ -1,3 +1,11 @@
+export type PayrollRegisterDetails = {
+  check_details: any;
+  claimant: string;
+  reference_number: string;
+  periods: PeriodDetails[]
+}
+
+
 export type PeriodDetails = {
   period: string;
   employees: EmployeeDetails[];
