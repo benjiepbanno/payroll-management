@@ -49,10 +49,10 @@ export async function fetchAccountingEmployeeDetails(values: {
     }
 
     const data = await response.json();
-    console.log(
-      "Employee Details Actions fetchAccountingEmployeeDetails response:",
-      data
-    );
+    // console.log(
+    //   "Employee Details Actions fetchAccountingEmployeeDetails response:",
+    //   data
+    // );
 
     return {
       body: data.body,
@@ -111,10 +111,10 @@ export async function fetchHumanResourceEmployeeDetails(values: {
     }
 
     const data = await response.json();
-    console.log(
-      "Employee Details Actions fetchHumanResourceEmployeeDetails response:",
-      data
-    );
+    // console.log(
+    //   "Employee Details Actions fetchHumanResourceEmployeeDetails response:",
+    //   data
+    // );
 
     return {
       body: data.body,

@@ -11,7 +11,7 @@ export default function Page() {
   const { search_params } = useSearchParamsStore();
 
   return (
-    <div className="space-y-16">
+    <div className="h-svh space-y-16">
       <PageHeader title="Employee Details"/>
 
       <SearchForm />

@@ -40,7 +40,7 @@ export async function fetchEarningsDeductionsHeaders(values: {
     }
 
     const data = await response.json();
-    console.log("Actions fetchEarningsDeductionsHeaders: ", data);
+    // console.log("Actions fetchEarningsDeductionsHeaders: ", data);
 
     return data;
   } catch (error) {
@@ -90,7 +90,7 @@ export async function fetchEarningsMandatoryDeductions(values: {
     }
 
     const data = await response.json();
-    console.log("Actions fetchEarningsMandatoryDeductions: ", data);
+    // console.log("Actions fetchEarningsMandatoryDeductions: ", data);
 
     return data;
   } catch (error) {
@@ -137,7 +137,7 @@ export async function fetchOtherDeductions(values: {
     }
 
     const data = await response.json();
-    console.log("Actions fetchOtherDeductions: ", data);
+    // console.log("Actions fetchOtherDeductions: ", data);
 
     return data;
   } catch (error) {
@@ -187,7 +187,7 @@ export async function fetchEarningsDeductions(values: {
     }
 
     const data = await response.json();
-    console.log("Actions fetchEarningsDeductions: ", data);
+    // console.log("Actions fetchEarningsDeductions: ", data);
 
     return data;
   } catch (error) {
@@ -232,7 +232,7 @@ export async function fetchRemittances(values: {
     }
 
     const data = await response.json();
-    console.log("Actions fetchRemittances: ", data);
+    // console.log("Actions fetchRemittances: ", data);
 
     return data;
   } catch (error) {
@@ -307,7 +307,7 @@ export async function deletePayroll(values: {
     }
 
     const data = await response.json();
-    console.log("Actions deletePayroll: ", data);
+    // console.log("Actions deletePayroll: ", data);
 
     return data;
   } catch (error) {
