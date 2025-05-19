@@ -3,11 +3,10 @@
 import { useEffect } from "react";
 
 import { useSearchParamsStore } from "@/store/payroll-registers/search-params-store";
-import { usePeriodsStore } from "@/store/payroll-registers/periods-store";
+import { usePayrollRegisterStore } from "@/store/payroll-registers/payroll-register-store";
 
 import PayrollRegister from "./payroll-register/payroll-register";
 import PayrollRegisterSummary from "./payroll-register-summary/payroll-register-summary";
-import { usePayrollRegisterStore } from "@/store/payroll-registers/payroll-register-store";
 
 export default function SearchResult() {
   const { search_params } = useSearchParamsStore();
