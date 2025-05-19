@@ -1,8 +1,14 @@
 export type PayrollRegisterDetails = {
-  check_details: any;
+  check_details: CheckDetails;
   claimant: string;
   reference_number: string;
   periods: PeriodDetails[]
+}
+
+export type CheckDetails = {
+  number: number;
+  date: string;
+  amount: number
 }
 
 

@@ -17,7 +17,12 @@ export default function PayrollRegister() {
 
   return (
     <div className="space-y-2">
-      <PayrollRegisterHeader />
+      <PayrollRegisterHeader
+        check_details={data.check_details}
+        claimant={data.claimant}
+        reference_number={data.reference_number}
+      />
+      
       <PayrollRegisterTableHeaders />
 
       {data.periods.map((period_details: PeriodDetails) => (
