@@ -31,7 +31,7 @@ export default function SearchResult() {
 
   if (is_loading) {
     return (
-      <div className="flex justify-center h-150">
+      <div className="flex justify-center h-96">
         <span className="loading loading-dots loading-xl"></span>
       </div>
     );
@@ -39,7 +39,7 @@ export default function SearchResult() {
 
   if (error) {
     return (
-      <div className="flex justify-center items-center h-150">
+      <div className="flex justify-center items-center h-96">
         <span style={{ color: "red" }}>{error}</span>
       </div>
     );
@@ -47,8 +47,8 @@ export default function SearchResult() {
 
   if (Object.keys(payroll_register.body).length === 0) {
     return (
-      <div className="flex justify-center items-center h-150">
-        <p style={{ color: "red" }}>No payroll register found.</p>
+      <div className="flex justify-center items-center h-96">
+        <p style={{ color: "red" }}>Search payroll register.</p>
       </div>
     );
   }
