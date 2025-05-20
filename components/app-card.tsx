@@ -17,13 +17,13 @@ type Props = {
 
 export default function AppCard({ title, description, href }: Props) {
   return (
-    <Card className="flex flex-col justify-between">
+    <Card className="flex flex-col justify-between w-2xs">
       <CardHeader>
         <CardTitle>{title}</CardTitle>
         <CardDescription>{description}</CardDescription>
       </CardHeader>
-      <CardFooter>
-        <Button asChild>
+      <CardFooter className="">
+        <Button size="sm" asChild>
           <Link href={href}>
           Proceed
             <ChevronRightCircle />
