@@ -25,7 +25,7 @@ export default function AppCard({ title, description, href }: Props) {
       <CardFooter className="">
         <Button size="sm" asChild>
           <Link href={href}>
-          Proceed
+            Proceed
             <ChevronRightCircle />
           </Link>
         </Button>
