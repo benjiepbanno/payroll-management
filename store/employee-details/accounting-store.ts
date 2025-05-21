@@ -45,8 +45,8 @@ export const useAccountingStore = create<AccountingState>()(
 
         try {
           const { body, error } = await fetchAccountingEmployeeDetails(params);
-          console.log("Store Accounting Data: ", body);
-          console.log("Store Accounting Error: ", error);
+          // console.log("Store Accounting Data: ", body);
+          // console.log("Store Accounting Error: ", error);
 
           if (error) {
             set({ error: error, is_loading: false });

@@ -47,8 +47,8 @@ export const useHumanResourceStore = create<HumanResourceState>()(
           const { body, error } = await fetchHumanResourceEmployeeDetails(
             params
           );
-          console.log("Store Human Resource Data: ", body);
-          console.log("Store Human Resource Error: ", error);
+          // console.log("Store Human Resource Data: ", body);
+          // console.log("Store Human Resource Error: ", error);
 
           if (error) {
             set({ error: error, is_loading: false });
