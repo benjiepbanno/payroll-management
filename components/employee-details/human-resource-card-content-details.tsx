@@ -1,6 +1,7 @@
 import { CardContent } from "@/components/ui/card";
 import EmployeeDetailsLineCard from "./employee-details-line-card";
 import { HumanResourceEmployeeDetails } from "@/lib/employee-details/types";
+import { formatAmount, formatDate } from "@/lib/employee-details/utils";
 
 type Props = {
   employeeDetails: HumanResourceEmployeeDetails;
@@ -23,7 +24,7 @@ export default function HumanResourceCardContentDetails({
 
       <EmployeeDetailsLineCard
         title="Birth Date"
-        value={employeeDetails.birthDate}
+        value={formatDate(employeeDetails.birthDate)}
       />
 
       <EmployeeDetailsLineCard title="Sex" value={employeeDetails.sex} />
@@ -69,12 +70,16 @@ export default function HumanResourceCardContentDetails({
         <>
           <EmployeeDetailsLineCard
             title="Annual Salary"
-            value={employeeDetails.currentEmployment.actualSalaryAnnual}
+            value={formatAmount(
+              employeeDetails.currentEmployment.actualSalaryAnnual
+            )}
           />
 
           <EmployeeDetailsLineCard
             title="Monthly Salary"
-            value={employeeDetails.currentEmployment.actualSalaryMonthly}
+            value={formatAmount(
+              employeeDetails.currentEmployment.actualSalaryMonthly
+            )}
           />
 
           <EmployeeDetailsLineCard
@@ -96,17 +101,17 @@ export default function HumanResourceCardContentDetails({
         <>
           <EmployeeDetailsLineCard
             title="Date From"
-            value={employeeDetails.currentEmployment.dateFrom}
+            value={formatDate(employeeDetails.currentEmployment.dateFrom)}
           />
 
           <EmployeeDetailsLineCard
             title="Date To"
-            value={employeeDetails.currentEmployment.dateTo}
+            value={formatDate(employeeDetails.currentEmployment.dateTo)}
           />
 
           <EmployeeDetailsLineCard
             title="Rate"
-            value={employeeDetails.currentEmployment.rate}
+            value={formatAmount(employeeDetails.currentEmployment.rate)}
           />
 
           <EmployeeDetailsLineCard

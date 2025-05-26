@@ -23,10 +23,6 @@ export default function HumanResourceCard({ description }: Props) {
       <ScrollArea className="h-102">
         <HumanResourceCardContent />
       </ScrollArea>
-
-      {/* <CardFooter>
-        <p>Card Footer</p>
-      </CardFooter> */}
     </Card>
   );
 }

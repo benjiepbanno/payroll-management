@@ -23,10 +23,6 @@ export default function AccountingCard({ description }: Props) {
       <ScrollArea className="h-102">
         <AccountingCardContent />
       </ScrollArea>
-
-      {/* <CardFooter>
-        <p>Card Footer</p>
-      </CardFooter> */}
     </Card>
   );
 }

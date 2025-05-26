@@ -1,6 +1,11 @@
 import { CardContent } from "@/components/ui/card";
 import EmployeeDetailsLineCard from "./employee-details-line-card";
 import { AccountingEmployeeDetails } from "@/lib/employee-details/types";
+import {
+  formatAmount,
+  formatDate,
+  getAppointmentStatus,
+} from "@/lib/employee-details/utils";
 
 type Props = {
   employeeDetails: AccountingEmployeeDetails;
@@ -9,21 +14,6 @@ type Props = {
 export default function AccountingCardContentDetails({
   employeeDetails,
 }: Props) {
-  function getAppointmentStatus(appt: string | undefined) {
-    if (!appt) return appt;
-
-    switch (appt.trim().toUpperCase()) {
-      case "P":
-        return "Plantilla";
-      case "J":
-        return "Job Order";
-      case "C":
-        return "Contract of Service";
-      default:
-        return appt;
-    }
-  }
-
   return (
     <CardContent>
       <EmployeeDetailsLineCard
@@ -36,7 +26,10 @@ export default function AccountingCardContentDetails({
         value={`${employeeDetails.lastname}, ${employeeDetails.firstname} ${employeeDetails.middlename}`}
       />
 
-      <EmployeeDetailsLineCard title="Birth Date" value={employeeDetails.dob} />
+      <EmployeeDetailsLineCard
+        title="Birth Date"
+        value={formatDate(employeeDetails.dob)}
+      />
 
       <EmployeeDetailsLineCard title="Sex" value={employeeDetails.gender} />
 
@@ -69,16 +62,19 @@ export default function AccountingCardContentDetails({
         value={getAppointmentStatus(employeeDetails.appt) || ""}
       />
 
-      <EmployeeDetailsLineCard title="Rate" value={employeeDetails.rate} />
+      <EmployeeDetailsLineCard
+        title="Rate"
+        value={formatAmount(employeeDetails.rate)}
+      />
 
       <EmployeeDetailsLineCard
         title="Date Hired"
-        value={employeeDetails.date_hired}
+        value={formatDate(employeeDetails.date_hired)}
       />
 
       <EmployeeDetailsLineCard
         title="Date Retired"
-        value={employeeDetails.date_retired}
+        value={formatDate(employeeDetails.date_retired)}
       />
 
       <EmployeeDetailsLineCard title="Office" value={employeeDetails.office} />

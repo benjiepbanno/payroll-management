@@ -29,18 +29,18 @@ export async function middleware(request: NextRequest) {
   }
 
   // Call PHP API to check session
-  const res = await fetch("http://localhost:8080/sample/check-session.php", {
-    credentials: "include",
-    headers: {
-      Cookie: request.headers.get("cookie") || "",
-    },
-  });
+  // const res = await fetch("http://localhost:8080/sample/check-session.php", {
+  //   credentials: "include",
+  //   headers: {
+  //     Cookie: request.headers.get("cookie") || "",
+  //   },
+  // });
 
-  const data = await res.json();
+  // const data = await res.json();
 
-  if (!data.authenticated) {
-    return NextResponse.redirect(data.login_url);
-  }
+  // if (!data.authenticated) {
+  //   return NextResponse.redirect(data.login_url);
+  // }
 
   return NextResponse.next();
 }
