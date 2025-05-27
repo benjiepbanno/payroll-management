@@ -3,6 +3,7 @@ import { useEarningsDeductionsHeadersPropsStore } from "@/store/carded-payrolls/
 import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { formatAmount } from "@/lib/carded-payrolls/utils";
 
 export default function HeaderCard() {
   const { earnings_deductions_headers_props } =
@@ -37,8 +38,8 @@ export default function HeaderCard() {
             <div className="">
               <Label>Gross</Label>
               <Input
-                value={Number(earnings_deductions_headers_props.gross).toFixed(
-                  2
+                value={formatAmount(
+                  earnings_deductions_headers_props.gross ?? 0
                 )}
                 disabled
               ></Input>
@@ -46,7 +47,7 @@ export default function HeaderCard() {
             <div className="">
               <Label>Net</Label>
               <Input
-                value={Number(earnings_deductions_headers_props.net).toFixed(2)}
+                value={formatAmount(earnings_deductions_headers_props.net ?? 0)}
                 disabled
               ></Input>
             </div>

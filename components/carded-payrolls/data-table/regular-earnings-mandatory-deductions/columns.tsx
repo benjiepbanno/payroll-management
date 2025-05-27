@@ -3,6 +3,7 @@
 import { ColumnDef } from "@tanstack/react-table";
 import { DataTableColumnHeader } from "../data-table-column-header";
 import { RegularEarningsMandatoryDeductions } from "@/lib/carded-payrolls/schema";
+import { formatAmount, formatAmountString } from "@/lib/carded-payrolls/utils";
 
 export const columns: ColumnDef<RegularEarningsMandatoryDeductions>[] = [
   {

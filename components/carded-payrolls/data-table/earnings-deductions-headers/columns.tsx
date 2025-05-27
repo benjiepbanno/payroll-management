@@ -6,6 +6,7 @@ import { ColumnDef } from "@tanstack/react-table";
 import { DataTableColumnHeader } from "../data-table-column-header";
 import { EarningsDeductionsHeaders } from "@/lib/carded-payrolls/schema";
 import { DataTableRowActions } from "./data-table-row-actions";
+import { formatAmount } from "@/lib/carded-payrolls/utils";
 
 export const columns: ColumnDef<EarningsDeductionsHeaders>[] = [
   {
@@ -57,7 +58,8 @@ export const columns: ColumnDef<EarningsDeductionsHeaders>[] = [
     ),
     cell: ({ row }) => (
       <span>
-        {Number(row.original.gross).toFixed(2)}
+        {/* {Number(row.original.gross).toFixed(2)} */}
+        {formatAmount(row.original.gross)}
       </span>
     ),
   },
@@ -68,7 +70,8 @@ export const columns: ColumnDef<EarningsDeductionsHeaders>[] = [
     ),
     cell: ({ row }) => (
       <span>
-        {Number(row.original.net).toFixed(2)}
+        {/* {Number(row.original.net).toFixed(2)} */}
+        {formatAmount(row.original.net)}
       </span>
     ),
   },
@@ -95,3 +98,5 @@ export const columns: ColumnDef<EarningsDeductionsHeaders>[] = [
     cell: ({ row }) => <DataTableRowActions row={row} />,
   },
 ];
+
+
