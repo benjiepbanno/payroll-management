@@ -54,14 +54,19 @@ export default function SearchForm() {
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
     // console.log("Search Form: ", values);
-    if (isSearchByNumber) {
-      values.last_name = "";
-      values.first_name = "";
-      values.middle_name = "";
-    } else {
-      values.employee_number = "";
-    }
     setSearchParams(values);
+  }
+
+  function resetForm() {
+    form.reset({
+      primary: form.getValues("primary"),
+      search_by: form.getValues("search_by"),
+      employee_number: "",
+      last_name: "",
+      first_name: "",
+      middle_name: "",
+    });
+    // console.log("Form reset to: ", form.getValues());
   }
 
   // console.log("Default Search Params: ", search_params);
@@ -110,6 +115,7 @@ export default function SearchForm() {
                   onValueChange={(value) => {
                     field.onChange(value);
                     setIsSearchByNumber(value === "employee-number");
+                    resetForm();
                   }}
                   value={field.value}
                 >
@@ -207,7 +213,7 @@ export default function SearchForm() {
           </>
         )}
 
-        <Button type="submit" className="w-32">
+        <Button type="submit"  className="w-32">
           <Search />
           Search
         </Button>
