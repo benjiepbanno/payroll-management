@@ -28,21 +28,36 @@ export async function middleware(request: NextRequest) {
     return NextResponse.next();
   }
 
+  const cookie = request.headers.get("cookie") || "";
+  const host = request.headers.get("host");
+  console.log("Cookies: ", cookie);
+  console.log("Host: ", host);
+
+  const AFMIS_WEB_URL = process.env.AFMIS_WEB_URL;
+  const AFMIS_LOCAL_URL = process.env.AFMIS_LOCAL_URL;
+  const AFMIS_AUTHORIZATION = process.env.AFMIS_AUTHORIZATION;
+
   // Call PHP API to check session
-  // const res = await fetch("http://localhost:8080/sample/check-session.php", {
-  //   credentials: "include",
-  //   headers: {
-  //     Cookie: request.headers.get("cookie") || "",
-  //   },
-  // });
+  const res = await fetch(`${AFMIS_WEB_URL}/check-session`, {
+    method: "POST",
+    credentials: "include",
+    headers: {
+      Authorization: `${AFMIS_AUTHORIZATION}`,
+      Cookie: cookie,
+    },
+  });
 
-  // const data = await res.json();
+  const data = await res.json();
+  console.log("Response: ", data);
 
-  // if (!data.authenticated) {
-  //   return NextResponse.redirect(data.login_url);
-  // }
+  if (!data.authenticated) {
+    const isInternal = host?.includes("192.168.100.244");
+    const baseUrl = isInternal ? `${AFMIS_LOCAL_URL}` : `${AFMIS_WEB_URL}`;
+    return NextResponse.redirect(baseUrl);
+  }
 
-  return NextResponse.next();
+  const response = NextResponse.next();
+  return response;
 }
 
 export const config = {
