@@ -20,13 +20,13 @@ export default function Page() {
   const access: ModuleAccess = user_authorization.body;
 
   useEffect(() => {
-    if (access.carded_payrolls_access === 0) {
+    if (access.employee_details_access === 0) {
       router.replace("/"); // Redirect to base path
     }
-  }, [access.carded_payrolls_access, router]);
+  }, [access.employee_details_access, router]);
 
   // Optionally prevent rendering until redirect logic has time to run
-  if (access.carded_payrolls_access === 0) {
+  if (access.employee_details_access === 0) {
     return null;
   }
 
