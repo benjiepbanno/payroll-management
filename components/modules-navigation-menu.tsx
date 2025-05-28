@@ -1,6 +1,6 @@
 import React from "react";
 import { cn } from "@/lib/utils";
-import { modules } from "@/lib/modules";
+import { ModuleAccess, modules } from "@/lib/modules";
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -9,8 +9,28 @@ import {
   NavigationMenuList,
   NavigationMenuTrigger,
 } from "./ui/navigation-menu";
+import { useUserDetailsStore } from "@/store/user-details-store";
+import { useUserAuthorizationStore } from "@/store/user-authorization-store";
 
 export default function ModulesNavigationMenu() {
+  const { user_authorization } = useUserAuthorizationStore();
+  const { user_details } = useUserDetailsStore();
+
+  const access = user_authorization.body;
+
+  const accessibleModules = modules.filter(
+    (module) => access[module.accessKey] === 1
+  );
+
+  if (accessibleModules.length === 0) {
+    return (
+      <div className="text-center text-gray-500">
+        You do not have access to any modules.
+      </div>
+    );
+  }
+
+
   return (
     <NavigationMenu className="[&_div.absolute]:left-auto [&_div.absolute]:right-0">
       <NavigationMenuList>
@@ -18,7 +38,7 @@ export default function ModulesNavigationMenu() {
           <NavigationMenuTrigger>Modules</NavigationMenuTrigger>
           <NavigationMenuContent>
             <ul className="grid gap-2 p-2 w-[300px]">
-              {modules.map((module) => (
+              {accessibleModules.map((module) => (
                 <ListItem
                   key={module.title}
                   title={module.title}
@@ -32,7 +52,7 @@ export default function ModulesNavigationMenu() {
         </NavigationMenuItem>
 
         <NavigationMenuItem>
-          <NavigationMenuLink href="https://afmis.davaocity.gov.ph/">
+          <NavigationMenuLink href={`https://${user_details.host}`}>
             AFMIS
           </NavigationMenuLink>
         </NavigationMenuItem>

@@ -4,8 +4,7 @@ import "./globals.css";
 
 import { ThemeProvider } from "@/components/theme-provider";
 
-import { headers } from "next/headers";
-import { checkSessionFromServer } from "@/actions/authentication";
+import { checkSessionFromServer } from "@/actions/authentication-actions";
 import UserInitializer from "@/components/user-initializer";
 
 const geistSans = Geist({

@@ -1,18 +1,38 @@
 "use client";
 
+import { useEffect } from "react";
+import { useRouter } from "next/navigation";
+
+import { useSearchParamsStore } from "@/store/employee-details/search-params-store";
+import { useUserAuthorizationStore } from "@/store/user-authorization-store";
+import { ModuleAccess } from "@/lib/modules";
+
 import PageHeader from "@/components/page-header";
 import SearchForm from "@/components/employee-details/search-form";
 import AccountingCard from "@/components/employee-details/accounting-card";
 import HumanResourceCard from "@/components/employee-details/human-resource-card";
 
-import { useSearchParamsStore } from "@/store/employee-details/search-params-store";
-
 export default function Page() {
+  const router = useRouter();
+  const { user_authorization } = useUserAuthorizationStore();
   const { search_params } = useSearchParamsStore();
+
+  const access: ModuleAccess = user_authorization.body;
+
+  useEffect(() => {
+    if (access.carded_payrolls_access === 0) {
+      router.replace("/"); // Redirect to base path
+    }
+  }, [access.carded_payrolls_access, router]);
+
+  // Optionally prevent rendering until redirect logic has time to run
+  if (access.carded_payrolls_access === 0) {
+    return null;
+  }
 
   return (
     <div className="p-16 space-y-16">
-      <PageHeader title="Employee Details"/>
+      <PageHeader title="Employee Details" />
 
       <SearchForm />
 

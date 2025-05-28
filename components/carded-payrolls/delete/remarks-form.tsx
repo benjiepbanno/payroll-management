@@ -18,24 +18,21 @@ import {
   AlertDialogFooter,
 } from "@/components/ui/alert-dialog";
 import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 
 import { useEarningsDeductionsHeadersParamsStore } from "@/store/carded-payrolls/params-store";
 import { usePayrollsDeletionStore } from "@/store/carded-payrolls/payrolls-deletion-store";
 import { useEarningsDeductionsHeadersStore } from "@/store/carded-payrolls/earnings-deductions-headers-store";
 import { useToggleComponentStore } from "@/store/carded-payrolls/toggle-component-store";
+import { useUserDetailsStore } from "@/store/user-details-store";
+
 
 const formSchema = z.object({
+  user: z.string().min(1, "Required"),
   remarks: z.string().min(1, "Required"),
 });
 
 export default function RemarksForm() {
-  const form = useForm<z.infer<typeof formSchema>>({
-    resolver: zodResolver(formSchema),
-    defaultValues: {
-      remarks: "",
-    },
-  });
-
   const { earnings_deductions_headers_params } =
     useEarningsDeductionsHeadersParamsStore();
   const {
@@ -45,17 +42,25 @@ export default function RemarksForm() {
   } = usePayrollsDeletionStore();
   const { fetchAndSetEarningsDeductionsHeaders } =
     useEarningsDeductionsHeadersStore();
+    
   const { setValue } = useToggleComponentStore();
+  const {user_details} = useUserDetailsStore()
 
   const [loading, setLoading] = useState(false);
   const [done, setDone] = useState(false);
+
+  const form = useForm<z.infer<typeof formSchema>>({
+    resolver: zodResolver(formSchema),
+    defaultValues: {
+      user: user_details.userName,
+      remarks: "",
+    },
+  });
 
   async function onSubmit(data: z.infer<typeof formSchema>) {
     setDone(false);
     setLoading(true);
     updatePayrollsDeletionStatus("pending");
-
-    const user = "benjie";
 
     if (
       earnings_deductions_headers_params.appointment_status &&
@@ -76,7 +81,7 @@ export default function RemarksForm() {
             carded_by: carded_by,
             carded_date: carded_date,
             fund: earnings_deductions_headers_params.fund ?? "",
-            user: user,
+            user: data.user,
             remarks: data.remarks,
           })
         )
@@ -113,6 +118,20 @@ export default function RemarksForm() {
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)}>
         <div className="space-y-4">
+          <FormField
+            control={form.control}
+            name="user"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>User</FormLabel>
+                <FormControl>
+                  <Input {...field} className="max-h-[150px]" disabled />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+
           <FormField
             control={form.control}
             name="remarks"
