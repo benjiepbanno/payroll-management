@@ -1,6 +1,6 @@
 import React from "react";
 import { cn } from "@/lib/utils";
-import { ModuleAccess, modules } from "@/lib/modules";
+import { modules } from "@/lib/modules";
 import {
   NavigationMenu,
   NavigationMenuContent,

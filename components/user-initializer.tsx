@@ -20,7 +20,7 @@ export default function UserInitializer({ host, userId, userName }: Props) {
     // console.log("Username: ", userName);
 
     setUserDetails({ host, userId, userName });
-  }, [host, userId, userName]);
+  }, [host, userId, userName, setUserDetails]);
 
   useEffect(() => {
     // console.log("Store Host: ", user_details.host);

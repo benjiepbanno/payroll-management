@@ -30,8 +30,8 @@ export async function middleware(request: NextRequest) {
 
   const cookie = request.headers.get("cookie") || "";
   const host = request.headers.get("host");
-  console.log("Cookies: ", cookie);
-  console.log("Host: ", host);
+  // console.log("Cookies: ", cookie);
+  // console.log("Host: ", host);
 
   const AFMIS_WEB_URL = process.env.AFMIS_WEB_URL;
   const AFMIS_LOCAL_URL = process.env.AFMIS_LOCAL_URL;
@@ -48,7 +48,7 @@ export async function middleware(request: NextRequest) {
   });
 
   const data = await res.json();
-  console.log("Response: ", data);
+  // console.log("Response: ", data);
 
   if (!data.authenticated) {
     const isInternal = host?.includes("192.168.100.244");

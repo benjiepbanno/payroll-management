@@ -2,7 +2,7 @@
 
 import { useUserAuthorizationStore } from "@/store/user-authorization-store";
 import ModuleCard from "./module-card";
-import { ModuleAccess, modules } from "@/lib/modules";
+import { modules } from "@/lib/modules";
 import { Skeleton } from "./ui/skeleton";
 
 export default function ModulesList() {
